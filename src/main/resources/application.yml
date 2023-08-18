@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    function.definition: clock;convert;log
+    stream:
+      default:
+        content-type: application/json
+      bindings:
+        clock-out-0:
+          producer:
+            poller:
+              fixed-delay: 1000
+          destination: testin
+        convert-in-0:
+          destination: testin
+        convert-out-0:
+          destination: testout
+        log-in-0:
+          destination: testout

@@ -1,0 +1,29 @@
+plugins {
+	id 'org.springframework.boot' version "${springBootVersion}"
+	id 'org.jetbrains.kotlin.jvm' version "${kotlinVersion}"
+	id 'org.jetbrains.kotlin.plugin.spring' version "${kotlinVersion}"
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+	implementation platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
+
+	// rabbit
+	implementation("org.springframework.cloud:spring-cloud-starter-stream-rabbit")
+
+	// coroutines
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+}
+
+kotlin {
+	jvmToolchain(17)
+}
+
+test {
+	useJUnitPlatform()
+}
